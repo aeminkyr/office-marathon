@@ -21,6 +21,7 @@ export async function isTracking(): Promise<boolean> {
  * This is a wrapper around `Location.startLocationUpdatesAsync` with the task name prefilled.
  */
 export async function startTracking() {
+  
   await Location.startLocationUpdatesAsync(locationTaskName, {
     accuracy: Location.Accuracy.BestForNavigation,
     timeInterval: 15 * 1000,
@@ -31,7 +32,7 @@ export async function startTracking() {
       notificationColor: '#333333',
     },
     // ios behavior
-    activityType: Location.ActivityType.Fitness,
+    activityType: Location.ActivityType.AutomotiveNavigation,
     showsBackgroundLocationIndicator: true,
   });
   console.log('[tracking]', 'started background location task');
@@ -51,6 +52,7 @@ export async function stopTracking() {
  * This method isn't "directly" connected to React, that's why we store the data locally.
  */
 TaskManager.defineTask(locationTaskName, async (event) => {
+  console.log("hello!")
   if (event.error) {
     return console.error('[tracking]', 'Something went wrong within the background location task...', event.error);
   }

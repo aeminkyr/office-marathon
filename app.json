@@ -27,11 +27,28 @@
       "package": "com.bycedric.officemarathon",
       "permissions": [
         "ACCESS_COARSE_LOCATION",
-        "ACCESS_FINE_LOCATION"
-      ]
+        "ACCESS_FINE_LOCATION",
+        "FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_LOCATION"        
+      ],
+      "isAndroidForegroundServiceEnabled": true      
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b9197bc8-35e8-4ffe-ade8-4d0aa5642f13"
+      }
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
+    ]
   }
 }
